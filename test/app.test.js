@@ -1,4 +1,4 @@
-import removeSNames from './app'
+import removeSNames from '../app'
 
 describe('removeSNames', () => {
     it('should remove all S names', () => {

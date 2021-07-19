@@ -1,13 +1,24 @@
-const removeSNames = (names) => {
-    /* let expectedOutput = names
-    names.forEach(element => {
-        if (element.toLowerCase().charAt(0) === 's') {
-            const index = expectedOutput.indexOf(element)
-            expectedOutput.splice(index, 1)
-        }
-    });
-    return expectedOutput */
-    return names.filter(element => element.toLowerCase().charAt(0) !== 's')
-}
 
-export default removeSNames;
+var express = require('express');
+var path = require('path');
+// var cookieParser = require('cookie-parser');
+// var logger = require('morgan');
+
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
+
+var app = express();
+
+// app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.get("/", (req,res) => {
+    res.end("Hello World")
+})
+// app.use(cookieParser());
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+
+export default app;
