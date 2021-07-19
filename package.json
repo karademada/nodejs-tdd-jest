@@ -1,8 +1,8 @@
 {
   "name": "jest",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "NodeJS API TDD Jest",
+  "type": "module",
   "jest": {
     "verbose": true
   },
