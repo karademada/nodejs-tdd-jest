@@ -3,6 +3,6 @@ import app from '../app'
 
 describe("GET /", () => {
     it("responds with Hello World!", (done) => {
-        request(app).get("/").expect("Hello World Aid Moubarak!", done);
+        request(app).get("/").expect("Hello World", done);
     })
 });
