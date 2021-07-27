@@ -1,35 +1,43 @@
-import dotenv from'dotenv'
-dotenv.config()
+import dotenv from "dotenv";
 /**
  * Module dependencies.
  */
 
-import app from './app.js';
-import http from 'http'
+import http from "http";
+// eslint-disable-next-line import/extensions
+import app from "./app.js";
+
+dotenv.config();
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+// eslint-disable-next-line no-use-before-define
+const port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app)
-    .listen(port)
-    .on('error', onError)
-    .on('listening', onListening);
+const server = http
+  .createServer(app)
+  .listen(port)
+  // eslint-disable-next-line no-use-before-define
+  .on("error", onError)
+  // eslint-disable-next-line no-use-before-define
+  .on("listening", onListening);
 
 /**
  * Normalize a port into a number, string, or false.
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  // eslint-disable-next-line no-shadow
+  const port = parseInt(val, 10);
 
+  // eslint-disable-next-line no-restricted-globals
   if (isNaN(port)) {
     // named pipe
     return val;
@@ -48,24 +56,22 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
+  if (error.syscall !== "listen") {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  const bind = typeof port === "string" ? `Pipe ${port}` : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+    case "EACCES":
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+    // eslint-disable-next-line no-fallthrough
+    case "EADDRINUSE":
+      console.error(`${bind} is already in use`);
       process.exit(1);
-      break;
+    // eslint-disable-next-line no-fallthrough
     default:
       throw error;
   }
@@ -76,9 +82,7 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-    console.log('Listening on ' + bind);
+  const addr = server.address();
+  const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
+  console.log(`Listening on ${bind}`);
 }
