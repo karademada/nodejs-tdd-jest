@@ -10,16 +10,22 @@
     "test:watch": "jest --watchAll",
     "dev": "nodemon --exec babel-node ./src/server.js",
     "import:csv": "mongoimport --uri mongodb://localhost:27017/salam-api --collection Sourates --type csv --file coranComplet.csv --headerline",
-    "start": "node ./src/server.js"
+    "start": "npm run build && node ./build/app.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src/server.js -s",
+    "build": "npm run clean && npm run build-babel"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.7",
     "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.14.7",
+    "@babel/runtime": "^7.15.3",
     "babel-jest": "^27.0.6",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -28,6 +34,8 @@
     "nodemon": "^2.0.12"
   },
   "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "babel-polyfill": "^6.26.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug": "^4.3.2",
