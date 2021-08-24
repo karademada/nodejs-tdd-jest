@@ -8,8 +8,9 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "dev": "nodemon --exec babel-node server.js",
-    "start": "node server.js"
+    "dev": "nodemon --exec babel-node ./src/server.js",
+    "import:csv": "mongoimport --uri mongodb://localhost:27017/salam-api --collection Sourates --type csv --file coranComplet.csv --headerline",
+    "start": "node ./src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -28,10 +29,13 @@
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "debug": "^4.3.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest": "^27.0.6",
+    "mongoosastic": "^4.6.0",
+    "mongoose": "^5.13.5",
     "morgan": "^1.10.0",
     "supertest": "^6.1.3"
   },

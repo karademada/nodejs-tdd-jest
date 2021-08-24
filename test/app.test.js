@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "../app";
+import app from "../src/subscribers/services/search/scripts/routes/app";
 
 describe("GET /", () => {
   it("responds with API TDD JEST Express", (done) => {
