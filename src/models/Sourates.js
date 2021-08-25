@@ -1,9 +1,9 @@
-// import mongoosastic from "mongoosastic";
+import mongoosastic from "mongoosastic";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const SourateSchema = new Schema({
+const sourateSchema = new Schema({
   AyahText: String,
   NomSouratAr: String,
   NomSouratFr: String,
@@ -14,19 +14,19 @@ const SourateSchema = new Schema({
   AyahTextHarakat: String,
 });
 
-// SourateSchema.plugin(mongoosastic, {
+// sourateSchema.plugin(mongoosastic, {
 //   host: "localhost",
 //   port: 9200,
 // });
 
-const Sourates = mongoose.model("Sourates", SourateSchema);
+const sourateModel = mongoose.model("sourate", sourateSchema);
 
-// Sourates.synchronize()
+// sourateModel.synchronize()
 //   .on("error", (err) => {
 //     console.log(`Error while synchronizing${err}`);
 //   });
 
-// Sourates
+// sourateModel
 //   .createMapping((err, mapping) => {
 //     if (err) {
 //       console.log(`Error while synchronizing${err}`);
@@ -34,4 +34,4 @@ const Sourates = mongoose.model("Sourates", SourateSchema);
 //     console.log(`mapping created : ${mapping}`);
 //   });
 
-export default Sourates;
+export { sourateModel };
