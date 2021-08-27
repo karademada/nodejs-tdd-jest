@@ -9,7 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/server.js",
-    "import:csv": "mongoimport --uri mongodb://localhost:27017/salam-api --collection sourates --type csv --file coranComplet.csv --headerline",
+    "import:csv": "mongoimport --uri mongodb+srv://salahdin_admin:Salahdin_1314@cluster0.ze2mh.mongodb.net/salam-api --collection sourates --type csv --file coranComplet.csv --headerline",
     "start": "cross-env NODE_ENV=production npm run build && node ./dist/server.js",
     "clean": "rm -rf build && mkdir build",
     "build": "npm run clean && npx babel src --out-dir dist"
@@ -45,6 +45,7 @@
     "express": "^4.17.1",
     "jest": "^27.0.6",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.11",
     "mongoosastic": "^4.6.0",
     "mongoose": "^5.13.8",
     "morgan": "^1.10.0",

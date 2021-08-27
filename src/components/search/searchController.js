@@ -1,5 +1,7 @@
+import mongoose from "mongoose";
 import { sourateModel } from "../../models/Sourates";
 
+const collection = mongoose.connection.collections;
 const findAll = async (req, res, next) => {
   try {
     sourateModel.find({}).exec().then((sourates) => {
@@ -64,4 +66,29 @@ const findAyatByID = (req, res, next) => {
   }
 };
 
-export { findAll, findSourateBySuraID, findAyatByID };
+const searchSourateByText = async (req, res, next) => {
+  const { text } = req.query;
+  const payload = [
+    {
+      $search: {
+        index: "default",
+        text: {
+          query: text,
+          path: {
+            wildcard: "*",
+          },
+        },
+      },
+    },
+  ];
+  try {
+    const souratesFromSearch = await sourateModel.aggregate(payload).exec();
+    return res.status(200).json(souratesFromSearch);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export {
+  findAll, findSourateBySuraID, findAyatByID, searchSourateByText,
+};
